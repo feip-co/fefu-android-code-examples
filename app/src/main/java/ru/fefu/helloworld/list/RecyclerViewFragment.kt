@@ -24,7 +24,7 @@ class RecyclerViewFragment :
 
         exampleAdapter.setItemClickListener { exampleAdapter.removeCat(it) }
 
-//        binding.btnAdd.setOnClickListener { exampleAdapter.addCat(catsRepository.getRandomCat()) }
+        binding.btnAdd.setOnClickListener { exampleAdapter.addCat(catsRepository.getRandomCat()) }
     }
 
 }

@@ -28,14 +28,14 @@ class ExampleAdapter(
     private var itemClickListener: (Int) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == ITEM_TYPE_CAT) {
+        return if (viewType == ITEM_TYPE_CAT) {
             val view =
                 LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
-            return ExampleViewHolder(view)
+            ExampleViewHolder(view)
         } else {
             val view =
                 LayoutInflater.from(parent.context).inflate(R.layout.list_item_other_cat, parent, false)
-            return Cat2ViewHolder(view)
+            Cat2ViewHolder(view)
         }
     }
 
@@ -45,6 +45,11 @@ class ExampleAdapter(
         } else {
             ((holder as ExampleViewHolder).bind(mutableCats[position]))
         }
+    }
+
+    fun addCat(cat: Cat) {
+        mutableCats.add(cat)
+        notifyItemInserted(mutableCats.size - 1)
     }
 
     fun removeCat(position: Int) {
@@ -67,7 +72,7 @@ class ExampleAdapter(
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                itemClickListener.invoke(position)
+                if (position != RecyclerView.NO_POSITION) itemClickListener.invoke(position)
             }
         }
 
