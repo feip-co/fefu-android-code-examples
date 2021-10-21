@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleProgressView">
+        <attr name="cpv_ProgressColor" format="color" />
+        <attr name="cpv_SecondaryProgressColor" format="color" />
+        <attr name="cpv_ProgressWidth" format="dimension" />
+        <attr name="cpv_MaxValue" format="integer" />
+    </declare-styleable>
+
+</resources>
