@@ -3,26 +3,29 @@
     package="ru.fefu.helloworld">
 
     <application
+        android:name=".navigation.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
-        <activity
-            android:name=".EditTextExampleActivity"
+
+        <!--<activity android:name=".navigation.FragmentExampleActivity"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
-        </activity>
-        <activity android:name=".GroupExampleActivity">
+        </activity>-->
 
-        </activity>
         <activity
-            android:name=".CodeLayoutExampleActivity"
+            android:name=".list.ListActivity"
             android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
 
     </application>

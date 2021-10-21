@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">HelloWorld</string>
-    <string name="label_hello_world">Hello world</string>
+    <string name="label_login_hello_world">Hello world</string>
     <string name="action_hello">Hello user</string>
+
+    <string name="hello"></string>
 </resources>
