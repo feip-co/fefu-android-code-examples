@@ -1,11 +1,7 @@
 package ru.fefu.lesson_5.customview
 
 import android.content.Context
-import android.gesture.Gesture
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.GestureDetector
@@ -15,7 +11,6 @@ import ru.fefu.lesson_5.R
 import kotlin.math.atan2
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.math.sqrt
 
 class CircleProgressView : View {
 
@@ -54,11 +49,6 @@ class CircleProgressView : View {
             Log.d("CircleProgress", "onFling")
             return super.onFling(e1, e2, velocityX, velocityY)
         }
-
-        override fun onSingleTapUp(e: MotionEvent?): Boolean {
-            currentProgress += 5
-            return super.onSingleTapUp(e)
-        }
     }
 
     private val gestureDetector by lazy { GestureDetector(context, gestureListener) }
@@ -90,7 +80,7 @@ class CircleProgressView : View {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val wrapSize = progressWidth * 4
+        val wrapSize = progressWidth * 6
 
         val measuredWidth = MeasureSpec.getSize(widthMeasureSpec)
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
@@ -98,12 +88,14 @@ class CircleProgressView : View {
         val measuredHeight = MeasureSpec.getSize(heightMeasureSpec)
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
 
-        val width = when (widthMode) {
-            MeasureSpec.EXACTLY, MeasureSpec.AT_MOST -> measuredWidth
+        val width =  when (widthMode) { /*resolveSize(wrapSize, widthMeasureSpec)*/
+            MeasureSpec.EXACTLY -> measuredWidth
+            MeasureSpec.AT_MOST -> min(wrapSize, measuredWidth)
             else -> wrapSize
         }
-        val height = when (heightMode) {
-            MeasureSpec.EXACTLY, MeasureSpec.AT_MOST -> measuredHeight
+        val height = when (heightMode) { /*resolveSize(wrapSize, heightMeasureSpec)*/
+            MeasureSpec.EXACTLY -> measuredHeight
+            MeasureSpec.AT_MOST -> min(wrapSize, measuredHeight)
             else -> wrapSize
         }
         setMeasuredDimension(width, height)
@@ -136,8 +128,7 @@ class CircleProgressView : View {
             else -> progressWidth / 2f
         }
 
-        radius =
-            min(height, width) / 2f - max(horizontalPadding, verticalPadding)
+        radius = min(height, width) / 2f - max(horizontalPadding, verticalPadding)
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
