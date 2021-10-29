@@ -18,6 +18,9 @@ interface CatDao {
     @Insert
     fun insert(cat: Cat)
 
+    @Insert
+    fun insertAll(vararg cat: Cat)
+
     @Delete
     fun delete(cat: Cat)
 

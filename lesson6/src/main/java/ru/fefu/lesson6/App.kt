@@ -2,6 +2,7 @@ package ru.fefu.lesson6
 
 import android.app.Application
 import androidx.room.Room
+import ru.fefu.lesson6.room.db.MIGRATION_1_2
 import ru.fefu.lesson6.room.db.MyDatabase
 
 class App : Application() {
@@ -15,7 +16,7 @@ class App : Application() {
             this,
             MyDatabase::class.java,
             "my_database"
-        ).allowMainThreadQueries().build()
+        ).allowMainThreadQueries().addMigrations(MIGRATION_1_2).build()
     }
 
     override fun onCreate() {
