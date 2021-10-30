@@ -20,6 +20,11 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:authorities="ru.fefu.lesson6"
+            android:name=".contentprovider.MyContentProvider"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

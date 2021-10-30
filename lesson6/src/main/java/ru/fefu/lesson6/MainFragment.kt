@@ -1,5 +1,6 @@
 package ru.fefu.lesson6
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -23,6 +24,18 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             replace(R.id.fragmentContainer, fragment)
             addToBackStack(null)
             commit()
+        }
+    }
+
+    private fun contentResolverTest() {
+        requireContext().contentResolver.query(
+            Uri.parse("content://ru.fefu.lesson6/cat"),
+            arrayOf("id", "name", "created_at"),
+            null,
+            null,
+            null
+        )?.use {
+
         }
     }
 

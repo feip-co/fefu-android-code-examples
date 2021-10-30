@@ -19,6 +19,13 @@ class SqliteHelper(
         private const val COLUMN_CAT_ID = "id"
         private const val COLUMN_CAT_NAME = "name"
         private const val COLUMN_CAT_CREATED_AT = "created_at"
+
+        fun buildCatFromCursor(cursor: Cursor) =
+            Cat(
+                cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CAT_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CAT_NAME)),
+                cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_CAT_CREATED_AT))
+            )
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -29,35 +36,38 @@ class SqliteHelper(
 
     }
 
+    fun allCatsCursor() = readableDatabase.query(
+        TABLE_NAME_CAT,
+        arrayOf(COLUMN_CAT_ID, COLUMN_CAT_NAME, COLUMN_CAT_CREATED_AT),
+        null,
+        null,
+        null,
+        null,
+        "$COLUMN_CAT_ID ASC"
+    )
+
+    fun catByIdCursor(id: Int) = readableDatabase.query(
+        TABLE_NAME_CAT,
+        arrayOf(COLUMN_CAT_ID, COLUMN_CAT_NAME, COLUMN_CAT_CREATED_AT),
+        "$COLUMN_CAT_ID = ?",
+        arrayOf(id.toString()),
+        null,
+        null,
+        null
+    )
+
     fun getAllCats(): List<Cat> {
         val result = mutableListOf<Cat>()
-        val cursor = readableDatabase.query(
-            TABLE_NAME_CAT,
-            arrayOf(COLUMN_CAT_ID, COLUMN_CAT_NAME, COLUMN_CAT_CREATED_AT),
-            null,
-            null,
-            null,
-            null,
-            "$COLUMN_CAT_ID ASC"
-        )
-        cursor.use {
-            while (it.moveToNext()) {
-                result.add(buildCatFromCursor(it))
-            }
+        val cursor = allCatsCursor()
+        while (cursor.moveToNext()) {
+            result.add(buildCatFromCursor(cursor))
         }
+        cursor.close()
         return result
     }
 
     fun getCatById(id: Int): Cat? {
-        val cursor = readableDatabase.query(
-            TABLE_NAME_CAT,
-            arrayOf(COLUMN_CAT_ID, COLUMN_CAT_NAME, COLUMN_CAT_CREATED_AT),
-            "$COLUMN_CAT_ID = ?",
-            arrayOf(id.toString()),
-            null,
-            null,
-            null
-        )
+        val cursor = catByIdCursor(id)
         cursor.use {
             return if (it.moveToNext()) {
                 buildCatFromCursor(it)
@@ -75,7 +85,6 @@ class SqliteHelper(
         writableDatabase.insert(TABLE_NAME_CAT, null, contentValues)
     }
 
-    //todo begin transaction
     fun insertAll(vararg cats: Cat) {
         cats.forEach { cat ->
             val cv = ContentValues().apply {
@@ -89,12 +98,5 @@ class SqliteHelper(
     fun deleteCat(id: Int) {
         writableDatabase.delete(TABLE_NAME_CAT, "$COLUMN_CAT_ID = ?", arrayOf(id.toString()))
     }
-
-    private fun buildCatFromCursor(cursor: Cursor) =
-        Cat(
-            cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CAT_ID)),
-            cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CAT_NAME)),
-            cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_CAT_CREATED_AT))
-        )
 
 }

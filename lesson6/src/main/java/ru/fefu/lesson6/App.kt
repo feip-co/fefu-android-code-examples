@@ -11,7 +11,7 @@ class App : Application() {
         lateinit var INSTANCE: App
     }
 
-    val db by lazy {
+    val db: MyDatabase by lazy {
         Room.databaseBuilder(
             this,
             MyDatabase::class.java,
