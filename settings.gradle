@@ -10,3 +10,4 @@ rootProject.name = "HelloWorld"
 include ':lesson_4'
 include ':lesson_5'
 include ':lesson6'
+include ':lesson7'
