@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSharedPrefs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Shared prefs" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAppSpecificStorage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="App-specific storage" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSQLite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SQLite database" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Room database" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

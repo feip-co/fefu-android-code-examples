@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- see activity_type_selector.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:color="#4B09F3" android:width="2dp"/>
+    <corners android:radius="14dp" />
+</shape>

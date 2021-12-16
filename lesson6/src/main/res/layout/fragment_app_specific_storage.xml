@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Text to save"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSavedValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/etInput" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCache"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:text="Write cache"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/btnPersistent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSavedValue" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPersistent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Write persistent"
+        android:textAllCaps="false"
+        app:layout_constraintBaseline_toBaselineOf="@id/btnCache"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnCache" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReadCache"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="Read cache"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/btnReadPersistent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCache" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReadPersistent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Read persistent"
+        android:textAllCaps="false"
+        app:layout_constraintBaseline_toBaselineOf="@id/btnReadCache"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnReadCache" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnExternalCache"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:text="Write ex. cache"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/btnExternalPersistent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnReadCache" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnExternalPersistent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Write ex. persistent"
+        android:textAllCaps="false"
+        app:layout_constraintBaseline_toBaselineOf="@id/btnExternalCache"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnExternalCache" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReadExternalCache"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="Read ex. cache"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/btnReadExternalPersistent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnExternalCache" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReadExternalPersistent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Read ex. persistent"
+        android:textAllCaps="false"
+        app:layout_constraintBaseline_toBaselineOf="@id/btnReadExternalCache"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnReadExternalCache" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

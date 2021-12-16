@@ -1,0 +1,16 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "HelloWorld"
+include ':lesson_4'
+include ':lesson_5'
+include ':lesson6'
+include ':lesson7'
+include ':lesson8'
+include ':lesson9'
+include ':lesson10'

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ru.fefu.lesson_5.customview.QuantityControlView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"/>
+
+    <ru.fefu.lesson_5.customview.CircleProgressView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:cpv_ProgressColor="@color/purple_700"
+        app:cpv_ProgressWidth="10dp"
+        app:cpv_SecondaryProgressColor="@color/purple_200" />
+
+</FrameLayout>
