@@ -39,7 +39,6 @@ class RetrofitActivity : AppCompatActivity(R.layout.activity_http_connection) {
                     t.printStackTrace()
                 }
             })
-        AsyncTaskLoader
     }
 
     private fun sendMultipart() {

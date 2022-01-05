@@ -25,7 +25,6 @@ class App : Application() {
             .writeTimeout(10L, TimeUnit.SECONDS)
             .callTimeout(10L, TimeUnit.SECONDS)
             .addInterceptor(NetworkStateInterceptor(this))
-            .addInterceptor(CustomHeaderInterceptor())
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
